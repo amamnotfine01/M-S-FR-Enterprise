@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          var originalFetch = window.fetch;
+          if (originalFetch) {
+            Object.defineProperty(window, 'fetch', {
+              value: originalFetch.bind(window),
+              writable: true,
+              configurable: true,
+              enumerable: true,
+            });
+          }
+        } catch (e) {
+          // Ignore if descriptor cannot be modified
+        }
+        window.addEventListener(
+          'error',
+          function (event) {
+            if (
+              event &&
+              event.message &&
+              event.message.indexOf('Cannot set property fetch') !== -1
+            ) {
+              event.preventDefault();
+              event.stopImmediatePropagation();
+            }
+          },
+          true
+        );
+      })();
+    </script>
+    <title>M/S FR Enterprise — Contractor, Construction & Supplier</title>
+    <meta name="description" content="Official corporate website and procurement portal for M/S FR Enterprise (Proprietor: Faysal Rahman), licensed Contractor, Construction & Material Supplier in Tanbazar, Narayanganj-1400, Bangladesh." />
+    <meta property="og:title" content="M/S FR Enterprise — Contractor, Construction & Supplier" />
+    <meta property="og:description" content="Official corporate website and procurement portal for M/S FR Enterprise (Proprietor: Faysal Rahman), licensed Contractor, Construction & Material Supplier in Tanbazar, Narayanganj-1400, Bangladesh." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased selection:bg-emerald-800 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
